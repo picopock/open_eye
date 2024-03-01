@@ -1,0 +1,16 @@
+{
+  "float": [
+    {
+      "name": "tabs_bar_height",
+      "value": "56.0vp"
+    },
+    {
+      "name": "tabs_bar_item_image_size",
+      "value": "21.0vp"
+    },
+    {
+      "name": "tabs_bar_item_text_font_size",
+      "value": "10.0fp"
+    }
+  ]
+}
