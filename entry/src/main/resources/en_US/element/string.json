@@ -11,6 +11,22 @@
     {
       "name": "EntryAbility_label",
       "value": "Open Eye"
+    },
+    {
+      "name": "press_retry",
+      "value": "Try Again~"
+    },
+    {
+      "name": "loading",
+      "value": "loading ~"
+    },
+    {
+      "name": "load_error",
+      "value": "Error occurred!"
+    },
+    {
+      "name": "load_network_error",
+      "value": "Network Error~"
     }
   ]
 }

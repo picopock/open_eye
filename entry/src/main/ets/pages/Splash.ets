@@ -7,7 +7,7 @@ struct Splash {
   @State message: string = 'Hello World'
 
   aboutToAppear() {
-    setTimeout(()=> {
+    setTimeout(() => {
     router.replaceUrl({url: RoutePath.Main});
     }, 3000);
   }

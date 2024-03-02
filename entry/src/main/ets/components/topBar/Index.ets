@@ -1,6 +1,6 @@
 import window from '@ohos.window';
 import router from '@ohos.router';
-import {noop} from '../../utils/index';
+import {noop} from '../../utils/noop';
 
 @Preview
 @Component
@@ -8,11 +8,12 @@ export struct TopBar {
   @Prop title: string;
   @Prop alpha: number;
   @Prop backButton: boolean;
-  // @Prop onBackClick: Function;
+
+  onBackClick: Function = noop;
 
   @State statusBarHeight: number = 0;
 
-  setSystemStatusBar() {
+  setSystemStatusBar = () => {
     const context = getContext(this);
 
     window.getLastWindow(context, (err, lastWindow) => {
@@ -65,7 +66,7 @@ export struct TopBar {
               .width('16vp')
               .height('16vp')
               .onClick(() => {
-                // this.onBackClick();
+                this.onBackClick();
                 router.back();
               })
           }

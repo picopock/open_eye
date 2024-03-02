@@ -11,6 +11,22 @@
     {
       "name": "EntryAbility_label",
       "value": "开眼"
+    },
+    {
+      "name": "press_retry",
+      "value": "请重试~"
+    },
+    {
+      "name": "loading",
+      "value": "加载中 ~"
+    },
+    {
+      "name": "load_error",
+      "value": "加载失败!"
+    },
+    {
+      "name": "load_network_error",
+      "value": "网络异常~"
     }
   ]
 }
