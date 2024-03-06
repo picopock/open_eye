@@ -1,6 +1,5 @@
 import window from '@ohos.window';
-import router from '@ohos.router';
-import {noop} from '../../utils/noop';
+import { noop } from '../../utils/noop';
 
 @Preview
 @Component
@@ -8,6 +7,8 @@ export struct TopBar {
   @Prop title: string;
   @Prop alpha: number;
   @Prop backButton: boolean;
+
+  private titleAlign: FlexAlign = FlexAlign.Center;
 
   onBackClick: Function = noop;
 
@@ -50,7 +51,7 @@ export struct TopBar {
           .backgroundColor($r("app.color.color_red"))
           .opacity(this.alpha);
 
-        Flex({direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center}) {
+        Flex({direction: FlexDirection.Row, justifyContent: this.titleAlign, alignItems: ItemAlign.Center}) {
           Text(this.title)
             .fontSize('16fp')
             .fontColor($r('app.color.color_white'))
@@ -67,7 +68,6 @@ export struct TopBar {
               .height('16vp')
               .onClick(() => {
                 this.onBackClick();
-                router.back();
               })
           }
           .width('50vp')

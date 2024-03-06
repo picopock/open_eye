@@ -10,7 +10,11 @@ export default struct Index {
       Column() {
         MineHeader();
         InfoList();
-      }
-    };
+      };
+    }
+    .constraintSize({
+      minHeight: '100%'
+    })
+    .align(Alignment.Top);
   }
 }

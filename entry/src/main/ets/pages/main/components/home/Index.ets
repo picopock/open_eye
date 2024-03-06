@@ -1,5 +1,7 @@
+import router from '@ohos.router';
 import { homeService } from '../../../../apis';
 import {  LoadingStatus, Skeleton, SkeletonItem, TopBar, WithPlaceholder } from '../../../../components/Index';
+import { RoutePath } from '../../../../route/Path';
 import { FeedResponse, IssueItem as IIssueItem } from '../../../../types/home';
 import { IssueItem } from './components/IssueItem';
 
@@ -94,7 +96,10 @@ export default struct Index {
     List({ space: 10, initialIndex: 0 }) {
       ForEach(this.dataList, (item) => {
         ListItem() {
-          IssueItem({ data: item });
+          IssueItem({ data: item })
+            .onClick(() => {
+              router.pushUrl({ url: RoutePath.Detail, params: { id: item?.data?.id, playUrl: item?.data?.playUrl }})
+            });
         }
       });
 

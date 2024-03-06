@@ -2,6 +2,9 @@
   "src": [
     "pages/Splash",
     "pages/main/Index",
-    "pages/Info"
+    "pages/Info",
+    "pages/detail/Index",
+    "pages/CategoryDetail",
+    "pages/TopicDetail"
   ]
 }

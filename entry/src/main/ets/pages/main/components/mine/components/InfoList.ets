@@ -19,9 +19,9 @@ export struct InfoList {
   });
 
   private infos: Info[] = [
-    { name: '关注', icon: $r('app.media.icon_focus'), onClick: () => { router.pushUrl({ url: RoutePath.Info, params: {"containerType": "focus"} }) } },
-    { name: '分类', icon: $r('app.media.icon_type'), onClick: () => { router.pushUrl({ url: RoutePath.Info, params: {"containerType": "category"} }) } },
-    { name: '热门', icon: $r('app.media.icon_topic'), onClick: () => { router.pushUrl({ url: RoutePath.Info, params: {"containerType": "topic"} }) } },
+    { name: '关注', icon: $r('app.media.icon_focus'), onClick: () => { router.pushUrl({ url: RoutePath.Info, params: {"containerType": "focus"} }, router.RouterMode.Standard) } },
+    { name: '分类', icon: $r('app.media.icon_type'), onClick: () => { router.pushUrl({ url: RoutePath.Info, params: {"containerType": "category"} }, router.RouterMode.Standard ) } },
+    { name: '热门', icon: $r('app.media.icon_topic'), onClick: () => { router.pushUrl({ url: RoutePath.Info, params: {"containerType": "topic"} }, router.RouterMode.Standard) } },
     { name: '关于', icon: $r('app.media.icon_about'), onClick: () => { this.dialogController.open(); } },
   ];
 
@@ -33,8 +33,7 @@ export struct InfoList {
         }
       }, (info) => info.name );
     }
-    .width('100%')
-    .layoutWeight(1);
+    .width('100%');
   }
 
   @Builder
