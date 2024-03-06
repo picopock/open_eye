@@ -27,6 +27,14 @@
     {
       "name": "load_network_error",
       "value": "Network Error~"
+    },
+    {
+      "name": "dialog_about_me",
+      "value": "About"
+    },
+    {
+      "name": "project_desc",
+      "value": "This project is an eye-opening App developed based on HarmonyOS Api9 version (mainly developed using ArkTs + ArkUI). It is mainly used to learn and understand how to use the HarmonyOS developed App; the project encapsulates basic network requests and page network status management, etc., and also encapsulates Some basic components and usage examples of basic components are provided for your reference. If you have a good implementation method, please feel free to enlighten me! ! !"
     }
   ]
 }

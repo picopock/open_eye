@@ -3,5 +3,6 @@ export const RoutePath = {
   Main: 'pages/main/Index',
   Detail: 'pages/detail/Index',
   CategoryDetail: 'pages/categoryDetail/Index',
-  TopicDetail: 'pages/topicDetail/Index'
+  TopicDetail: 'pages/topicDetail/Index',
+  Info: 'pages/Info',
 }
