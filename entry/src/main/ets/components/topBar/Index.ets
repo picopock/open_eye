@@ -8,6 +8,7 @@ export struct TopBar {
   @Prop title: string;
   @Prop alpha: number;
   @Prop backButton: boolean;
+  @Prop isSubBar: boolean;
 
   onBackClick: Function = noop;
 
@@ -35,7 +36,9 @@ export struct TopBar {
   }
 
   aboutToAppear(){
-    this.setSystemStatusBar();
+    if(!this.isSubBar) {
+      this.setSystemStatusBar();
+    }
   }
 
   build() {

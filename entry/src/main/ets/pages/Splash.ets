@@ -1,5 +1,5 @@
 import router from '@ohos.router';
-import RoutePath from '../route/Path';
+import { RoutePath } from '../route/Path';
 
 @Entry
 @Component

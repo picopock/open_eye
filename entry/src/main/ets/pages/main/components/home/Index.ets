@@ -1,6 +1,5 @@
 import { homeService } from '../../../../apis';
-import {  Skeleton, SkeletonItem, TopBar } from '../../../../components/Index';
-import { LoadingStatus, WithPlaceholder } from '../../../../components/withPlaceholder/Index';
+import {  LoadingStatus, Skeleton, SkeletonItem, TopBar, WithPlaceholder } from '../../../../components/Index';
 import { FeedResponse, IssueItem as IIssueItem } from '../../../../types/home';
 import { IssueItem } from './components/IssueItem';
 
@@ -38,13 +37,11 @@ export default struct Index {
         this.data = data.nextPageUrl?.split("?")?.[1]?.split('&')?.[0]?.split('=')?.[1];
 
         this.loadingStatus = LoadingStatus.SUCCESS;
-
-      }).catch(() => {
-        this.loadingStatus = LoadingStatus.ERROR;
-      }).finally(() => {
         if(!this.isInit) {
           this.isInit = true;
         }
+      }).catch(() => {
+        this.loadingStatus = LoadingStatus.ERROR;
       });
   }
 
@@ -61,7 +58,7 @@ export default struct Index {
 
   build() {
     Column() {
-      TopBar({title: "首页", alpha: 1, backButton: false, })
+      TopBar({title: "首页", alpha: 1, backButton: false, isSubBar: false })
         .align(Alignment.TopStart);
 
       Stack() {
@@ -107,7 +104,7 @@ export default struct Index {
       }
     }
     .listDirection(Axis.Vertical)
-    .padding({top: 10})
+    .margin({top: 10})
     .divider({
       strokeWidth: 1,
       color: $r('app.color.color_f5f5f5'),

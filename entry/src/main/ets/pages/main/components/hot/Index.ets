@@ -7,7 +7,7 @@ export default struct Index {
 
   build() {
     Column() {
-      TopBar({title: "热门", alpha: 1, backButton: false, })
+      TopBar({title: "热门", alpha: 1, backButton: false, isSubBar: false })
         .align(Alignment.TopStart)
       Text(this.message)
         .fontSize(50)

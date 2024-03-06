@@ -38,12 +38,10 @@ export struct WithPlaceholder {
   }
 
   build() {
-    Column() {
-      if([LoadingStatus.SUCCESS, LoadingStatus.Loading].includes(this.loadingStatus as LoadingStatus)) {
-        this.children();
-      } else if ([LoadingStatus.ERROR, LoadingStatus.NETWORK_ERROR].includes(this.loadingStatus as LoadingStatus)) {
-        this.ErrorContent();
-      }
+    if([LoadingStatus.SUCCESS, LoadingStatus.Loading].includes(this.loadingStatus as LoadingStatus)) {
+      this.children();
+    } else if ([LoadingStatus.ERROR, LoadingStatus.NETWORK_ERROR].includes(this.loadingStatus as LoadingStatus)) {
+      this.ErrorContent();
     }
   }
 
@@ -69,7 +67,7 @@ export struct WithPlaceholder {
           })
       }
     }
-    .layoutWeight(1)
+    .height('100%')
     .justifyContent(FlexAlign.Center);
   }
 }

@@ -8,6 +8,7 @@ import emitter from '@ohos.events.emitter';
 
 import EventIds from '../../events/ids';
 import {loadingEvent} from '../../events/loading';
+import { provideAlias } from '../../constants/provideAlias';
 
 export type ImageResource = string | PixelMap | Resource;
 export class TabItem {
@@ -20,7 +21,8 @@ export class TabItem {
 @Entry
 @Component
 struct Main {
-  @State activeIndex: number = 0;
+  @Provide(/* provideAlias.HomeTabsIndex */'homeTabsIndex') activeIndex: number = 0;
+
   @State tabs: TabItem[] = [
     {index: 0, title: '首页', originImage: $r('app.media.icon_tab_home'), activeImage: $r('app.media.icon_tab_home_active')},
     {index: 1, title: '发现', originImage: $r('app.media.icon_tab_find'), activeImage: $r('app.media.icon_tab_find_active')},
@@ -66,19 +68,19 @@ struct Main {
     }) {
       TabContent() {
         Home()
-      }.tabBar(this.TabsBarItem(this.tabs[0]))
+      }.tabBar(this.tabsBarItem(this.tabs[0]))
 
       TabContent() {
         Find()
-      }.tabBar(this.TabsBarItem(this.tabs[1]))
+      }.tabBar(this.tabsBarItem(this.tabs[1]))
 
       TabContent() {
         Hot()
-      }.tabBar(this.TabsBarItem(this.tabs[2]))
+      }.tabBar(this.tabsBarItem(this.tabs[2]))
 
       TabContent() {
         Mine()
-      }.tabBar(this.TabsBarItem(this.tabs[3]))
+      }.tabBar(this.tabsBarItem(this.tabs[3]))
     }
     .width('100%')
     .height('100%')
@@ -93,7 +95,8 @@ struct Main {
     });
   }
 
-  @Builder TabsBarItem(item: TabItem) {
+  @Builder
+  tabsBarItem(item: TabItem) {
     Column() {
       Image(this.activeIndex === item.index ? item.activeImage : item.originImage)
         .width($r('app.float.tabs_bar_item_image_size'))

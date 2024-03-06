@@ -1,4 +1,7 @@
-export default class Path {
-  static readonly Splash = 'pages/Splash';
-  static readonly Main = 'pages/main/Index';
+export const RoutePath = {
+  Splash: 'pages/Splash',
+  Main: 'pages/main/Index',
+  Detail: 'pages/detail/Index',
+  CategoryDetail: 'pages/categoryDetail/Index',
+  TopicDetail: 'pages/topicDetail/Index'
 }
