@@ -19,7 +19,7 @@ export struct TopBar {
 
     window.getLastWindow(context, (err, lastWindow) => {
       const avoidArea = lastWindow.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-      this.statusBarHeight = /* avoidArea.topRect.height */ 70;
+      this.statusBarHeight = /* avoidArea.topRect.height */ 80;
 
       lastWindow.setWindowSystemBarProperties({
         statusBarColor: "#ffffff",
