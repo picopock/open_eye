@@ -8,7 +8,6 @@ export struct TopBar {
   @Prop title: string;
   @Prop alpha: number;
   @Prop backButton: boolean;
-  @Prop isSubBar: boolean;
 
   onBackClick: Function = noop;
 
@@ -19,7 +18,7 @@ export struct TopBar {
 
     window.getLastWindow(context, (err, lastWindow) => {
       const avoidArea = lastWindow.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-      this.statusBarHeight = /* avoidArea.topRect.height */ 80;
+      this.statusBarHeight = /* avoidArea.topRect.height */ 70;
 
       lastWindow.setWindowSystemBarProperties({
         statusBarColor: "#ffffff",
@@ -36,9 +35,7 @@ export struct TopBar {
   }
 
   aboutToAppear(){
-    if(!this.isSubBar) {
-      this.setSystemStatusBar();
-    }
+    this.setSystemStatusBar();
   }
 
   build() {

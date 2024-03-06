@@ -5,7 +5,7 @@ export struct SkeletonItem {
       Image($r('app.media.back_placeholder'))
         .width('100%')
         .height('200vp')
-        .borderRadius('5vp').backgroundColor('#f00');
+        .borderRadius('5vp');
 
       Row()
         .width('90%')

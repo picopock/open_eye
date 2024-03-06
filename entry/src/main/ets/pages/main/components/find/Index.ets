@@ -23,10 +23,10 @@ export default struct Index {
 
   build() {
     Column() {
-      TopBar({title: "发现", alpha: 1, backButton: false, isSubBar: false })
+      TopBar({title: "发现", alpha: 1, backButton: false })
         .align(Alignment.TopStart);
 
-      Tabs({ barPosition: BarPosition.Start, controller: this.tabsController }){
+      Tabs({ barPosition: BarPosition.Start, controller: this.tabsController, index: this.currentTabsIndex }){
         TabContent() {
           Focus();
         }.tabBar(this.tabsBarItem(this.tabs[0]));

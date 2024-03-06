@@ -37,11 +37,12 @@ export default struct Index {
         this.data = data.nextPageUrl?.split("?")?.[1]?.split('&')?.[0]?.split('=')?.[1];
 
         this.loadingStatus = LoadingStatus.SUCCESS;
+      }).catch(() => {
+        this.loadingStatus = LoadingStatus.ERROR;
+      }).finally(() => {
         if(!this.isInit) {
           this.isInit = true;
         }
-      }).catch(() => {
-        this.loadingStatus = LoadingStatus.ERROR;
       });
   }
 
@@ -58,7 +59,7 @@ export default struct Index {
 
   build() {
     Column() {
-      TopBar({title: "首页", alpha: 1, backButton: false, isSubBar: false })
+      TopBar({title: "首页", alpha: 1, backButton: false })
         .align(Alignment.TopStart);
 
       Stack() {

@@ -3,4 +3,5 @@ export const paths = {
   FOLLOW: '/api/v4/tabs/follow',
   CATEGORY: '/api/v4/categories',
   TOPIC: '/api/v3/specialTopics',
+  RANK: '/api/v4/rankList/videos',
 }

@@ -25,11 +25,12 @@ export default struct Index {
         this.dataList = this.start === 0 ? items : [...this.dataList, ...items];
         this.start = this.start + items.length;
         this.loadingStatus = LoadingStatus.SUCCESS;
+      }).catch(() => {
+        this.loadingStatus = LoadingStatus.ERROR;
+      }).finally(() => {
         if(!this.isInit) {
           this.isInit = true;
         }
-      }).catch(() => {
-        this.loadingStatus = LoadingStatus.ERROR;
       });
   }
 

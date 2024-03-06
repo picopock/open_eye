@@ -17,7 +17,6 @@ export default struct Category {
 
   @Consume(provideAlias.HomeTabsIndex) @Watch('onHomeTabsIndexChange') homeTabsIndex: number;
 
-  // @Consume() @Watch('onFindTabsIndexChange') findTabsIndex: number;
   @Consume(provideAlias.FindTabsIndex) @Watch('onFindTabsIndexChange') findTabsIndex: number;
 
   aboutToAppear() {
@@ -46,11 +45,12 @@ export default struct Category {
       this.dataList = result;
       this.dataSource.reloadData(result);
       this.loadingStatus = LoadingStatus.SUCCESS;
+    }).catch(() => {
+      this.loadingStatus = LoadingStatus.ERROR;
+    }).finally(() => {
       if(!this.isInit) {
         this.isInit = true;
       }
-    }).catch(() => {
-      this.loadingStatus = LoadingStatus.ERROR;
     });
   }
 

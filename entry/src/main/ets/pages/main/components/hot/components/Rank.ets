@@ -1,49 +1,47 @@
 
 import router from '@ohos.router';
-import { topicService } from '../../../../../apis';
+import { rankService } from '../../../../../apis';
 import { LoadingStatus, Skeleton, SkeletonItem, WithPlaceholder } from '../../../../../components/Index';
 import { provideAlias } from '../../../../../constants/provideAlias';
 import { RoutePath } from '../../../../../route/Path';
-import { Topic as ITopic, TopicItem } from '../../../../../types/topic';
-import { imageUrlFormat } from '../../../../../utils/url';
+import { Rank as IRank, RankItem } from '../../../../../types/rank';
+import { IssueItem } from '../../home/components/IssueItem';
 
 @Component
-export default struct Topic {
+export default struct Rank {
+  private type: 'weekly'|'monthly'|'historical';
+  @Prop index: number;
+  @Prop name: string;
+
   @State loadingStatus: LoadingStatus = LoadingStatus.Loading;
   @State isRefreshing: boolean = false;
   @State isInit: boolean = false;
-  @State dataList: TopicItem[] = [];
-  @State showLoadMore: boolean = true;
-  @State start: number = 0;
+  @State dataList: RankItem[] = [];
 
   @Consume(provideAlias.HomeTabsIndex) @Watch('onHomeTabsIndexChange') homeTabsIndex: number;
-  @Consume(provideAlias.FindTabsIndex) @Watch('onFindTabsIndexChange') findTabsIndex: number;
+  @Consume(provideAlias.HotTabsIndex) @Watch('onHotTabsIndexChange') hotTabsIndex: number;
 
   onHomeTabsIndexChange() {
     this.initData()
   }
 
-  onFindTabsIndexChange() {
+  onHotTabsIndexChange() {
     this.initData()
   }
 
   initData() {
-    if (!this.isInit && this.homeTabsIndex == 1 && this.findTabsIndex == 2) {
+    if (!this.isInit && this.homeTabsIndex == 2 && this.hotTabsIndex == this.index) {
       this.loadData()
     }
   }
 
   loadData = () => {
     this.loadingStatus = LoadingStatus.Loading;
-    return topicService.getTopicDataList(this.start)
+    return rankService.getRankDataList(this.type)
       .then((res) => {
-        const data = res as any as ITopic;
-        const items: TopicItem[] = data?.itemList || [];
-        if(items.length === 0 && this.showLoadMore) {
-          this.showLoadMore = false;
-        }
-        this.dataList = this.start === 0 ? items : [...this.dataList, ...items];
-        this.start = this.start + items.length;
+        const data = res as any as IRank;
+        const items: RankItem[] = data?.itemList || [];
+        this.dataList = items;
         this.loadingStatus = LoadingStatus.SUCCESS;
       }).catch(() => {
         this.loadingStatus = LoadingStatus.ERROR;
@@ -55,7 +53,6 @@ export default struct Topic {
   }
 
   onRefresh = () => {
-    this.start = 0;
     this.loadData().finally(() => {
       this.isRefreshing = false;
     });
@@ -90,29 +87,41 @@ export default struct Topic {
     List({ space: 10, initialIndex: 0 }) {
       ForEach(this.dataList, (item) => {
         ListItem() {
-          Image(imageUrlFormat(item.data.image))
-            .alt($r('app.media.back_placeholder'))
-            .width("100%")
-            .height(200)
-            .border({ radius: 5 });
+          IssueItem({ data: item });
         }.onClick(() => {
-          router.pushUrl({ url: RoutePath.TopicDetail, params: { "id": item.data.id } });
-        })
+          router.pushUrl({ url: RoutePath.Detail, params: { "id": item.data.id, playUrl: item.data.playUrl } });
+        });
       });
-
-      if (this.showLoadMore){
+      if(this.dataList.length) {
         ListItem() {
-          SkeletonItem();
+          this.footer()
         }
       }
     }
     .height('100%')
     .listDirection(Axis.Vertical)
-    .padding(10)
-    .onReachEnd(() => {
-      if(this.showLoadMore) {
-        this.loadData();
-      }
-    });
+    .padding(10);
+  }
+
+  @Builder
+  footer() {
+    Row() {
+      Divider()
+        .strokeWidth(2)
+        .color('#999')
+        .width('50vp');
+      Text("我是有底线的")
+        .margin({ left: 15, right: 15 })
+        .fontSize('15fp')
+        .fontColor('#999');
+      Divider()
+        .strokeWidth(2)
+        .color('#999')
+        .width('50vp');
+    }
+    .width("100%")
+    .height(50)
+    .justifyContent(FlexAlign.Center)
+    .alignItems(VerticalAlign.Center);
   }
 }
