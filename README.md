@@ -4,4 +4,4 @@ A harmony application, a practice project, referenced from the [WinWang/Harmoney
 
 ## Demo
 
-![Demo](https://raw.githubusercontent.com/picopock/open_eye/master/snapshot/demo.gif)
+<image src="https://raw.githubusercontent.com/picopock/open_eye/master/snapshot/demo.gif" height="500">
