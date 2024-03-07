@@ -16,14 +16,8 @@ export default struct Category {
   @State showLoadMore: boolean = true;
 
   @Consume(provideAlias.HomeTabsIndex) @Watch('onHomeTabsIndexChange') homeTabsIndex: number;
-
   @Consume(provideAlias.FindTabsIndex) @Watch('onFindTabsIndexChange') findTabsIndex: number;
 
-  aboutToAppear() {
-    if(this.isInit) {
-      this.loadData();
-    }
-  }
 
   onHomeTabsIndexChange() {
     this.initData();
@@ -52,6 +46,12 @@ export default struct Category {
         this.isInit = true;
       }
     });
+  }
+
+  aboutToAppear() {
+    if(!this.isInit) {
+      this.loadData();
+    }
   }
 
   build() {

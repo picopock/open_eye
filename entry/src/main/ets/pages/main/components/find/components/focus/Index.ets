@@ -42,7 +42,9 @@ export default struct Index {
   }
 
   aboutToAppear() {
-    this.onRefresh();
+    if(!this.isInit) {
+      this.onRefresh();
+    }
   }
 
   build() {

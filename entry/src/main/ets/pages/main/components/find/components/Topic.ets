@@ -61,6 +61,12 @@ export default struct Topic {
     });
   }
 
+  aboutToAppear() {
+    if(!this.isInit) {
+      this.onRefresh();
+    }
+  }
+
   build() {
     Stack() {
       WithPlaceholder({
