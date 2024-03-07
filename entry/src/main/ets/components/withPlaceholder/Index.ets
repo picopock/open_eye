@@ -13,6 +13,7 @@ export struct WithPlaceholder {
 
   @BuilderParam children: () => void;
 
+  enableLoading: boolean = false;
   onRetry: Function = noop;
 
   errorImage = () => {
@@ -38,9 +39,11 @@ export struct WithPlaceholder {
   }
 
   build() {
-    if([LoadingStatus.SUCCESS, LoadingStatus.Loading].includes(this.loadingStatus as LoadingStatus)) {
+    if(this.loadingStatus === LoadingStatus.SUCCESS || (!this.enableLoading && this.loadingStatus === LoadingStatus.Loading)) {
       this.children();
     } else if ([LoadingStatus.ERROR, LoadingStatus.NETWORK_ERROR].includes(this.loadingStatus as LoadingStatus)) {
+      this.ErrorContent();
+    } else if(this.enableLoading && this.loadingStatus === LoadingStatus.Loading) {
       this.ErrorContent();
     }
   }

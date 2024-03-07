@@ -38,7 +38,11 @@ struct Detail {
       VideoPlayer({ url: this.playUrl, showControls: this.showControls, isAutoPlay: this.isAutoPlay })
         .width('100%')
         .height(248);
-      RecommendInfo({ relationId: this.relationId, onItemClick: this.onRecommendItemClick });
+      Row() {
+        RecommendInfo({ relationId: this.relationId, onItemClick: this.onRecommendItemClick });
+      }
+      .width('100%')
+      .layoutWeight(1);
     }
   }
 }

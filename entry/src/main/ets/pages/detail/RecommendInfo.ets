@@ -50,6 +50,7 @@ export struct RecommendInfo {
   build() {
     WithPlaceholder({
       loadingStatus: this.loadingStatus,
+      enableLoading: true,
       onRetry: this.loadData
     }) {
       this.content();
@@ -70,7 +71,7 @@ export struct RecommendInfo {
     }
     .width("100%")
     .height("100%")
-    .padding({ left: 10, right: 10 });
+    .padding(10);
   }
 
   @Builder
