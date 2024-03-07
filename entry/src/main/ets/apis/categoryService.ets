@@ -7,7 +7,7 @@ export class CategoryService {
   }
 
   getCategoryDataList() {
-    return axios.get<Category[]>(paths.CATEGORY, {
+    return axios.get<any, Category[]>(paths.CATEGORY, {
       params: {
         showLoading: true,
         checkLoginState: true,

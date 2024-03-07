@@ -1,5 +1,5 @@
 import { base } from '../constants/base';
-import { Topic } from '../types/topic';
+import { Recommend } from '../types/recommend';
 import axios from './axios/index';
 import { paths } from './path';
 
@@ -8,7 +8,7 @@ export class CategoryDetailService {
   }
 
   getCategoryDetailList(id: number, start: number) {
-    return axios.get<Topic[]>(paths.CATEGORY_VIDEO_LIST, {
+    return axios.get<any, Recommend>(paths.CATEGORY_VIDEO_LIST, {
       params: {
         id,
         start,

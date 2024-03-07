@@ -35,7 +35,7 @@ export default struct Category {
 
   loadData() {
     this.loadingStatus = LoadingStatus.Loading;
-    categoryService.getCategoryDataList().then((result: any) => {
+    categoryService.getCategoryDataList().then((result: ICategory[]) => {
       this.dataList = result;
       this.dataSource.reloadData(result);
       this.loadingStatus = LoadingStatus.SUCCESS;

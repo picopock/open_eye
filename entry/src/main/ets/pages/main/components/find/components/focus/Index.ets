@@ -16,9 +16,8 @@ export default struct Index {
   loadData = () => {
     this.loadingStatus = LoadingStatus.Loading;
     return focusService.getFocusDataList(this.start)
-      .then((res) => {
-        const data = res as any as FocusResponse;
-        const items: IFocusItem[] = data?.itemList || [];
+      .then((res: FocusResponse) => {
+        const items: IFocusItem[] = res?.itemList || [];
         if(items.length === 0 && this.showLoadMore) {
           this.showLoadMore = false;
         }

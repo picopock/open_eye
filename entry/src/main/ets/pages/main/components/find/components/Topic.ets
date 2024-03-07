@@ -36,9 +36,8 @@ export default struct Topic {
   loadData = () => {
     this.loadingStatus = LoadingStatus.Loading;
     return topicService.getTopicDataList(this.start)
-      .then((res) => {
-        const data = res as any as ITopic;
-        const items: TopicItem[] = data?.itemList || [];
+      .then((res: ITopic) => {
+        const items: TopicItem[] = res?.itemList || [];
         if(items.length === 0 && this.showLoadMore) {
           this.showLoadMore = false;
         }

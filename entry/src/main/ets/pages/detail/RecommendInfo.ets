@@ -26,14 +26,13 @@ export struct RecommendInfo {
 
     this.loadingStatus = LoadingStatus.Loading;
     videoService.getRecommendDataList(this.relationId)
-      .then(res => {
-        const data = res as any as Recommend;
-        const filterList: RecommendItem[] = data.itemList.filter((item) => item.type === "videoSmallCard");
+      .then((res: Recommend) => {
+        const filterList: RecommendItem[] = res.itemList.filter((item) => item.type === "videoSmallCard");
         this.dataList = filterList;
 
         this.loadingStatus = LoadingStatus.SUCCESS;
       })
-      .catch(err => {
+      .catch(() => {
         this.loadingStatus = LoadingStatus.ERROR;
       })
       .finally(() => {

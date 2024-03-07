@@ -7,7 +7,7 @@ export class VideoService {
   }
 
   getRecommendDataList(relationId: number) {
-    return axios.get<Recommend[]>(paths.VIDEO_RECOMMEND, {
+    return axios.get<any, Recommend>(paths.VIDEO_RECOMMEND, {
       params: {
         id: relationId
       },

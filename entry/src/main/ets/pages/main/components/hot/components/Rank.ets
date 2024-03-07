@@ -38,8 +38,7 @@ export default struct Rank {
   loadData = () => {
     this.loadingStatus = LoadingStatus.Loading;
     return rankService.getRankDataList(this.type)
-      .then((res) => {
-        const data = res as any as IRank;
+      .then((data: IRank) => {
         const items: RankItem[] = data?.itemList || [];
         this.dataList = items;
         this.loadingStatus = LoadingStatus.SUCCESS;

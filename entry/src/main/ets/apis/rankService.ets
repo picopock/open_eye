@@ -7,7 +7,7 @@ export class RankService {
   }
 
   getRankDataList(type: 'weekly'|'monthly'|'historical') {
-    return axios.get<Rank>(paths.RANK, {
+    return axios.get<any, Rank>(paths.RANK, {
       params: {
         strategy: type
       },

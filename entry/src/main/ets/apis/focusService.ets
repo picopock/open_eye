@@ -7,7 +7,7 @@ export class FocusService {
   }
 
   getFocusDataList(pageIndex: number) {
-    return axios.get<FocusResponse>(paths.FOLLOW, {
+    return axios.get<any, FocusResponse>(paths.FOLLOW, {
       params: {
         start: pageIndex
       },

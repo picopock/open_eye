@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from '@ohos/axios';
+import axios from '@ohos/axios';
 
 const instance = axios.create({
   baseURL: 'https://baobab.kaiyanapp.com',

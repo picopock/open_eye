@@ -8,7 +8,7 @@ export class TopicService {
   }
 
   getTopicDataList(start = 0) {
-    return axios.get<Topic[]>(paths.TOPIC, {
+    return axios.get<any, Topic>(paths.TOPIC, {
       params: {
         start
       },
@@ -16,6 +16,6 @@ export class TopicService {
   }
 
   getTopicDetailList(id: number) {
-    return axios.get<TopicDetail>(paths.TOPIC_DETAIL_LIST(id));
+    return axios.get<any, TopicDetail>(paths.TOPIC_DETAIL_LIST(id));
   }
 }

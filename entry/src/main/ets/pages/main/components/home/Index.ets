@@ -19,8 +19,7 @@ export default struct Index {
   loadData = () => {
     this.loadingStatus = LoadingStatus.Loading;
     return homeService.getHomeDataList(this.data)
-      .then((res) => {
-        const data = res as any as FeedResponse;
+      .then((data: FeedResponse) => {
         const items: IIssueItem[] = data?.issueList?.[0]?.itemList || [];
         let list: IIssueItem[]  = items.filter((item) => item.type == "video");
         if (this.data === "") {

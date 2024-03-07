@@ -7,7 +7,7 @@ export class HomeService {
   }
 
   getHomeDataList(params: string = '') {
-    return axios.get<FeedResponse>(paths.FEED, {
+    return axios.get<any, FeedResponse>(paths.FEED, {
       params: {
         data: params
       },

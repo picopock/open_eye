@@ -38,8 +38,7 @@ struct CategoryDetail {
 
     this.loadingStatus = LoadingStatus.Loading;
     return categoryDetailService.getCategoryDetailList(this.relationId, this.start)
-      .then(res => {
-        const data = res as any as Recommend;
+      .then((data: Recommend) => {
         const items: RecommendItem[] = data.itemList;
         if(items.length === 0 && this.showLoadMore) {
           this.showLoadMore = false;

@@ -30,8 +30,8 @@ struct TopicDetail {
 
     this.loadingStatus = LoadingStatus.Loading;
     return topicService.getTopicDetailList(this.topicId)
-      .then(res => {
-        this.topicDetail = res as any as ITopicDetail;
+      .then((res: ITopicDetail) => {
+        this.topicDetail = res;
         this.title = this.topicDetail.brief;
         this.loadingStatus = LoadingStatus.SUCCESS;
       })
