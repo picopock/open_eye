@@ -110,10 +110,10 @@ struct TopicDetail {
         };
       });
 
-      ListItem().width('100%').height(10);
     }
     .height('100%')
     .listDirection(Axis.Vertical)
+    .padding({ bottom: 10 })
     .onScrollIndex((firstIndex: number, lastIndex: number) => {
       if (this.playIndex > lastIndex || this.playIndex < firstIndex) {
         this.playIndex = -1;

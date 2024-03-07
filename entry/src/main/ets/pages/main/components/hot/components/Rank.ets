@@ -10,8 +10,8 @@ import { IssueItem } from '../../home/components/IssueItem';
 @Component
 export default struct Rank {
   private type: 'weekly'|'monthly'|'historical';
-  @Prop index: number;
-  @Prop name: string;
+  private index: number;
+  private name: string;
 
   @State loadingStatus: LoadingStatus = LoadingStatus.Loading;
   @State isRefreshing: boolean = false;
@@ -56,6 +56,10 @@ export default struct Rank {
     this.loadData().finally(() => {
       this.isRefreshing = false;
     });
+  }
+
+  aboutToAppear(){
+    this.initData();
   }
 
   build() {
