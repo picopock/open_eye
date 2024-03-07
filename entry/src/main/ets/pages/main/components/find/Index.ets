@@ -1,6 +1,6 @@
 
 import { TopBar } from '../../../../components/Index';
-import { provideAlias } from '../../../../constants/provideAlias';
+import { FindTabsIndex } from '../../../../constants/provideAlias';
 import Category from './components/Category';
 import Focus from './components/focus/Index';
 import Topic from './components/Topic';
@@ -12,7 +12,7 @@ export interface TabsItem {
 
 @Component
 export default struct Index {
-  @Provide(/* provideAlias.FindTabsIndex */ 'findTabsIndex') currentTabsIndex: number = 0;
+  @Provide(FindTabsIndex) currentTabsIndex: number = 0;
 
   private tabsController: TabsController = new TabsController();
   private tabs: TabsItem[] = [

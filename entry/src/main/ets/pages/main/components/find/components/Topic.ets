@@ -2,7 +2,7 @@
 import router from '@ohos.router';
 import { topicService } from '../../../../../apis';
 import { LoadingStatus, Skeleton, SkeletonItem, WithPlaceholder } from '../../../../../components/Index';
-import { provideAlias } from '../../../../../constants/provideAlias';
+import { HomeTabsIndex, FindTabsIndex } from '../../../../../constants/provideAlias';
 import { RoutePath } from '../../../../../route/Path';
 import { Topic as ITopic, TopicItem } from '../../../../../types/topic';
 import { imageUrlFormat } from '../../../../../utils/url';
@@ -16,8 +16,8 @@ export default struct Topic {
   @State showLoadMore: boolean = true;
   @State start: number = 0;
 
-  @Consume(provideAlias.HomeTabsIndex) @Watch('onHomeTabsIndexChange') homeTabsIndex: number;
-  @Consume(provideAlias.FindTabsIndex) @Watch('onFindTabsIndexChange') findTabsIndex: number;
+  @Consume(HomeTabsIndex) @Watch('onHomeTabsIndexChange') homeTabsIndex: number;
+  @Consume(FindTabsIndex) @Watch('onFindTabsIndexChange') findTabsIndex: number;
 
   onHomeTabsIndexChange() {
     this.initData()

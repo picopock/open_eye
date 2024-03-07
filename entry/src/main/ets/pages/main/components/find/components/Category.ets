@@ -1,7 +1,7 @@
 import router from '@ohos.router';
 import { categoryService } from '../../../../../apis';
 import { LoadingStatus, Skeleton, WithPlaceholder } from '../../../../../components/Index';
-import { provideAlias } from '../../../../../constants/provideAlias';
+import { HomeTabsIndex, FindTabsIndex } from '../../../../../constants/provideAlias';
 import { RoutePath } from '../../../../../route/Path';
 import { Category as ICategory, CategoryDataSource } from '../../../../../types/category';
 import { imageUrlFormat } from '../../../../../utils/url';
@@ -15,8 +15,8 @@ export default struct Category {
   @State dataSource: CategoryDataSource = new CategoryDataSource();
   @State showLoadMore: boolean = true;
 
-  @Consume(provideAlias.HomeTabsIndex) @Watch('onHomeTabsIndexChange') homeTabsIndex: number;
-  @Consume(provideAlias.FindTabsIndex) @Watch('onFindTabsIndexChange') findTabsIndex: number;
+  @Consume(HomeTabsIndex) @Watch('onHomeTabsIndexChange') homeTabsIndex: number;
+  @Consume(FindTabsIndex) @Watch('onFindTabsIndexChange') findTabsIndex: number;
 
 
   onHomeTabsIndexChange() {

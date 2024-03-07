@@ -2,7 +2,7 @@
 import router from '@ohos.router';
 import { rankService } from '../../../../../apis';
 import { LoadingStatus, Skeleton, SkeletonItem, WithPlaceholder } from '../../../../../components/Index';
-import { provideAlias } from '../../../../../constants/provideAlias';
+import { HomeTabsIndex, HotTabsIndex } from '../../../../../constants/provideAlias';
 import { RoutePath } from '../../../../../route/Path';
 import { Rank as IRank, RankItem } from '../../../../../types/rank';
 import { IssueItem } from '../../home/components/IssueItem';
@@ -18,8 +18,8 @@ export default struct Rank {
   @State isInit: boolean = false;
   @State dataList: RankItem[] = [];
 
-  @Consume(provideAlias.HomeTabsIndex) @Watch('onHomeTabsIndexChange') homeTabsIndex: number;
-  @Consume(provideAlias.HotTabsIndex) @Watch('onHotTabsIndexChange') hotTabsIndex: number;
+  @Consume(HomeTabsIndex) @Watch('onHomeTabsIndexChange') homeTabsIndex: number;
+  @Consume(HotTabsIndex) @Watch('onHotTabsIndexChange') hotTabsIndex: number;
 
   onHomeTabsIndexChange() {
     this.initData()

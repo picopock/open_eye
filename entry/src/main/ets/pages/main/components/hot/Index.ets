@@ -1,6 +1,6 @@
 
 import { TopBar } from '../../../../components/Index';
-import { provideAlias } from '../../../../constants/provideAlias';
+import { HotTabsIndex } from '../../../../constants/provideAlias';
 import Rank from './components/Rank';
 
 export interface TabsItem {
@@ -11,7 +11,7 @@ export interface TabsItem {
 
 @Component
 export default struct Index {
-  @Provide(/* provideAlias.HotTabsIndex */ 'hotTabsIndex') hotTabsIndex: number = 0;
+  @Provide(HotTabsIndex) hotTabsIndex: number = 0;
 
   private tabsController: TabsController = new TabsController();
   private tabs: TabsItem[] = [

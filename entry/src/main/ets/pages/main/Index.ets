@@ -8,7 +8,7 @@ import emitter from '@ohos.events.emitter';
 
 import EventIds from '../../events/ids';
 import {loadingEvent} from '../../events/loading';
-import { provideAlias } from '../../constants/provideAlias';
+import { HomeTabsIndex } from '../../constants/provideAlias';
 
 export type ImageResource = string | PixelMap | Resource;
 export class TabItem {
@@ -21,7 +21,7 @@ export class TabItem {
 @Entry
 @Component
 struct Main {
-  @Provide(/* provideAlias.HomeTabsIndex */'homeTabsIndex') activeIndex: number = 0;
+  @Provide(HomeTabsIndex) activeIndex: number = 0;
 
   @State tabs: TabItem[] = [
     {index: 0, title: '首页', originImage: $r('app.media.icon_tab_home'), activeImage: $r('app.media.icon_tab_home_active')},

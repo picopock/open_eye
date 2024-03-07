@@ -4,6 +4,7 @@ import Focus from './main/components/find/components/focus/Index';
 import Category from './main/components/find/components/Category';
 import Topic from './main/components/find/components/Topic';
 import { RoutePath } from '../route/Path';
+import { FindTabsIndex, HomeTabsIndex } from '../constants/provideAlias';
 
 @Entry
 @Component
@@ -11,8 +12,8 @@ struct Info {
   @State containerType: string = '';
   @State title: string = '';
 
-  @Provide(/* provideAlias.HomeTabsIndex */'homeTabsIndex') activeIndex: number = 1;
-  @Provide(/* provideAlias.FindTabsIndex */ 'findTabsIndex') currentTabsIndex: number = 0;
+  @Provide(HomeTabsIndex) activeIndex: number = 1;
+  @Provide(FindTabsIndex) currentTabsIndex: number = 0;
 
   getTitle() {
     const titleMap: Record<string, string> = {
