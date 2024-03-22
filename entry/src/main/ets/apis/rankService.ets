@@ -1,13 +1,10 @@
 import { Rank } from '../types/rank';
-import axios from './axios/index';
+import { BaseService } from './axios';
 import { paths } from './path';
 
-export class RankService {
-  constructor(baseUrl = '') {
-  }
-
+export class RankService extends BaseService {
   getRankDataList(type: 'weekly'|'monthly'|'historical') {
-    return axios.get<any, Rank>(paths.RANK, {
+    return this.get<Rank>(paths.RANK, {
       params: {
         strategy: type
       },

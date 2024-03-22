@@ -1,14 +1,12 @@
 import { Topic } from '../types/topic';
 import { TopicDetail } from '../types/topicDetail';
-import axios from './axios/index';
+import { BaseService } from './axios';
 import { paths } from './path';
 
-export class TopicService {
-  constructor(baseUrl = '') {
-  }
+export class TopicService extends BaseService {
 
   getTopicDataList(start = 0) {
-    return axios.get<any, Topic>(paths.TOPIC, {
+    return this.get<Topic>(paths.TOPIC, {
       params: {
         start
       },
@@ -16,6 +14,6 @@ export class TopicService {
   }
 
   getTopicDetailList(id: number) {
-    return axios.get<any, TopicDetail>(paths.TOPIC_DETAIL_LIST(id));
+    return this.get<TopicDetail>(paths.TOPIC_DETAIL_LIST(id));
   }
 }

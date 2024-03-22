@@ -1,14 +1,11 @@
 import { base } from '../constants/base';
 import { Recommend } from '../types/recommend';
-import axios from './axios/index';
+import { BaseService } from './axios';
 import { paths } from './path';
 
-export class CategoryDetailService {
-  constructor(baseUrl = '') {
-  }
-
+export class CategoryDetailService extends BaseService {
   getCategoryDetailList(id: number, start: number) {
-    return axios.get<any, Recommend>(paths.CATEGORY_VIDEO_LIST, {
+    return this.get<Recommend>(paths.CATEGORY_VIDEO_LIST, {
       params: {
         id,
         start,

@@ -1,13 +1,10 @@
 import { FeedResponse } from '../types/home';
-import axios from './axios/index';
+import { BaseService } from './axios';
 import { paths } from './path';
 
-export class HomeService {
-  constructor(baseUrl = '') {
-  }
-
+export class HomeService extends BaseService {
   getHomeDataList(params: string = '') {
-    return axios.get<any, FeedResponse>(paths.FEED, {
+    return this.get<FeedResponse>(paths.FEED, {
       params: {
         data: params
       },

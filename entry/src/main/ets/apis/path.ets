@@ -6,5 +6,5 @@ export const paths = {
   RANK: '/api/v4/rankList/videos',
   VIDEO_RECOMMEND: '/api/v4/video/related',
   CATEGORY_VIDEO_LIST: '/api/v4/categories/videoList',
-  TOPIC_DETAIL_LIST: (id: number) => `api/v3/lightTopics/internal/${id}`
+  TOPIC_DETAIL_LIST: (id: number) => `/api/v3/lightTopics/internal/${id}`
 }

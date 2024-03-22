@@ -1,13 +1,10 @@
 import { Category } from '../types/category';
-import axios from './axios/index';
+import { BaseService } from './axios';
 import { paths } from './path';
 
-export class CategoryService {
-  constructor(baseUrl = '') {
-  }
-
+export class CategoryService extends BaseService {
   getCategoryDataList() {
-    return axios.get<any, Category[]>(paths.CATEGORY, {
+    return this.get<Category[]>(paths.CATEGORY, {
       params: {
         showLoading: true,
         checkLoginState: true,

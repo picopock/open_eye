@@ -1,13 +1,10 @@
 import { FocusResponse } from '../types/focus';
-import axios from './axios/index';
+import { BaseService } from './axios';
 import { paths } from './path';
 
-export class FocusService {
-  constructor(baseUrl = '') {
-  }
-
+export class FocusService extends BaseService {
   getFocusDataList(pageIndex: number) {
-    return axios.get<any, FocusResponse>(paths.FOLLOW, {
+    return this.get<FocusResponse>(paths.FOLLOW, {
       params: {
         start: pageIndex
       },

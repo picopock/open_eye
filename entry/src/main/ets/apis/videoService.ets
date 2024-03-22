@@ -1,13 +1,10 @@
 import { Recommend } from '../types/recommend';
-import axios from './axios/index';
+import { BaseService } from './axios';
 import { paths } from './path';
 
-export class VideoService {
-  constructor(baseUrl = '') {
-  }
-
+export class VideoService extends BaseService {
   getRecommendDataList(relationId: number) {
-    return axios.get<any, Recommend>(paths.VIDEO_RECOMMEND, {
+    return this.get<Recommend>(paths.VIDEO_RECOMMEND, {
       params: {
         id: relationId
       },
