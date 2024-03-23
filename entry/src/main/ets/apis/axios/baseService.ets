@@ -1,11 +1,12 @@
 import { AxiosRequestConfig } from '@ohos/axios';
+import { DEFAULT_URL_PREFIX } from '../../constants/url';
 import axios from './axios';
 
 export class BaseService {
   urlPrefix: string = '';
 
-  constructor(urlPrefix?: string) {
-    this.urlPrefix = urlPrefix || '';
+  constructor(urlPrefix: string = DEFAULT_URL_PREFIX) {
+    this.urlPrefix = urlPrefix;
   }
 
   getUri(config?: AxiosRequestConfig): string {

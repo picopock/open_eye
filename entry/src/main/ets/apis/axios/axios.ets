@@ -1,8 +1,9 @@
 import axios from '@ohos/axios';
+import { AXIOS_TIME_OUT, BASE_URL } from '../../constants/url';
 
 const instance = axios.create({
-  baseURL: 'https://baobab.kaiyanapp.com',
-  timeout: 5000,
+  baseURL: BASE_URL,
+  timeout: AXIOS_TIME_OUT,
   headers: {
     'Content-Type': 'application-json'
   }
